@@ -1,41 +1,49 @@
-let map, directionsService, directionsRenderer;
+let map, directionsService , directionsRenderer;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 6,
-    center: { lat: 41.85, lng: -87.65 }, // default Chicago
-  });
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 6,
+        center: { lat: 41.85, lng: -87.65 }, //default center 
+    });
 
-  directionsService = new google.maps.DirectionsService();
-  directionsRenderer = new google.maps.DirectionsRenderer();
-  directionsRenderer.setMap(map);
-}
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    //add Autocompletes 
+    const originInput = new google.maps.places.Autocomplete(
+        document.getElementById("origin")
+    )
+
+    const destinationInput = new google.maps.places.Autocomplete(
+        document.getElementById("destination")
+    )
+
+} ;
 
 window.onload = initMap;
 
 function calculateRoute() {
-  const originInput = document.getElementById("origin");
-  const destinationInput = document.getElementById("destination");
+    const origin = document.getElementById("origin").value;
+    const destination = document.getElementById("destination").value;
 
-  const origin = originInput.value;
-  const destination = destinationInput.value;
-
-  if (!origin || !destination) {
-    alert("Please enter both origin and destination");
-    return;
-  }
-
-  const request = {
-    origin: origin,
-    destination: destination,
-    travelMode: google.maps.TravelMode.DRIVING,
-  };
-
-  directionsService.route(request, (result, status) => {
-    if (status === "OK") {
-      directionsRenderer.setDirections(result);
-    } else {
-      alert("Directions request failed: " + status);
+    if(!origin || !destination){
+        alert("Please enter both origin and destination");
+        return;
     }
-  });
+    const request = {
+        origin: origin,
+        destination: destination,
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
+
+    directionsService.route(request,(result,status) => {
+        if(status === "OK"){
+            directionsRenderer.setDirections(result);
+
+        } else {
+            alert("Direction request Failed")
+        }
+    })
+
 }
