@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Google Maps Direction Finder</header>
+
+    <div class="controls">
+        <input type="text" id="text" placeholder="Enter starting location">
+        <input type="text" id="destination" placeholder="Enter destination">
+        <button onclick="calculateRoute()"> Get Direction</button>
+    </div>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCayTmleVKpfD3RhGiX5brsbQpc1Tk2f2I&libraries=places"></script>
+    <script src="Script.js"></script>
+    
+</body>
+</html>
