@@ -8,14 +8,15 @@
 </head>
 <body>
     <header>Google Maps Direction Finder</header>
+    <gmpx-api-loader key="API-KEY" libraries="places"></gmpx-api-loader>
 
     <div class="controls">
-        <input type="text" id="text" placeholder="Enter starting location">
-        <input type="text" id="destination" placeholder="Enter destination">
+        <gmpx-place-autocomplete id="origin" placeholder="Enter starting location"></gmpx-place-autocomplete>
+    <gmpx-place-autocomplete id="destination" placeholder="Enter destination"></gmpx-place-autocomplete>
         <button onclick="calculateRoute()"> Get Direction</button>
     </div>
     <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCayTmleVKpfD3RhGiX5brsbQpc1Tk2f2I&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=API-KEY&libraries=places"></script>
     <script src="Script.js"></script>
     
 </body>
